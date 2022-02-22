@@ -2,7 +2,9 @@ package a3;
 
 public class Tester {
 
+  //ot = original tree
   public void merge (BST ot) {
+    //nt = new tree
     BST nt = new BSTImpl();
     int[] v1 = new int[]{55,25,105,45,1135,15};
     for (int v:v1) { ot.insert(v); }
@@ -42,6 +44,7 @@ public class Tester {
     System.out.println("\n== testing insert ====================");
      
     int[] insertions = new int[]{17,8,34,3,77,19,5,11};
+    //this inserts only 17, 19, 5, and 11
     for (int dval:insertions) { bst.insert(dval); }
 
     Print.tree(bst);
@@ -91,7 +94,7 @@ public class Tester {
     System.out.println(bst.contains(44));
       
     System.out.println(bst.contains(11));
-    bst.remove(34);
+    bst.remove(11);
     Print.tree(bst);
     System.out.println(bst.height());
     System.out.println(bst.size());

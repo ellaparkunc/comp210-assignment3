@@ -21,12 +21,16 @@ public class Main {
     * as I have done below.
     *
     */
+       //how do i actually test things with this??
+        //how do i create a not empty bts
+       //i had to add it to insert if root==null
       BST bst = new BSTImpl();
       Tester tst = new Tester();
       
-      //tst.emptyTree(bst);
-      //tst.insert(bst);
-      //tst.remove(bst);
+      tst.emptyTree(bst);
+      //bst.insert(3);
+      tst.insert(bst);
+      tst.remove(bst);
       //tst.merge(bst);
  
       // etc...

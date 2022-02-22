@@ -30,6 +30,7 @@ public class NodeImpl implements Node {
     }
 
     @Override
+    //node you're talking about.setLeft(node youre trying to set it to)
     public void setLeft(Node left) {
         this.left = left;
     }
