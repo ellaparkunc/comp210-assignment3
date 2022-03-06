@@ -52,6 +52,8 @@ public class BSTImpl implements BST {
         //when it goes past a leaf, c==null
             // and it returns false and recursion stops
       return contains_r(val, c.getLeft()) || contains_r(val, c.getRight());
+      //THIS ISN'T THE SMARTEST WAY TO DO IT, BC YOU ARE CHECKING EVERYTHING
+        //and not making use of the fact you're using a BST
     }
 
     @Override
@@ -162,7 +164,7 @@ public class BSTImpl implements BST {
                 //if k is greater than right most value
                 if (c.getRight() == null) {
                     Node rc = new NodeImpl(k);
-                    c.setLeft(rc); size++; return k;
+                    c.setRight(rc); size++; return k;
                 } else {
                     //if there is a value to the left, recurse on that value and k
                     //go lower and left or higher and right until you hit null
@@ -186,10 +188,20 @@ public class BSTImpl implements BST {
     public int findMin() {
         /*See BST.java for method specification */
         /* Your code here */
-        
-        return Integer.MAX_VALUE; // Dummy return statement.  Remove when you implement!
+        //QUESTION: how am i supposed to do this without recursion?
+        Node here = this.root;
+        //lets see, i want the function to run once for a one node tree,
+        //twice for a 2 node tree (height of 1)
+        //max of three times for a three node tree
+        for (int i = 0; i < this.height() + 1; i++) {
+            if (here.getLeft() == null) {
+                return here.getValue();
+            } else {
+                here = here.getLeft();
+            }
+        }
+        return -100;
     }
-    
     @Override
     // interface method ==================================================
     public int findMax() {

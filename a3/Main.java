@@ -1,6 +1,8 @@
 
 package a3;
 
+import static a3.Print.tree;
+
 public class Main {
 
    public static void main(String[] args){
@@ -27,10 +29,17 @@ public class Main {
       BST bst = new BSTImpl();
       Tester tst = new Tester();
       
-      tst.emptyTree(bst);
-      //bst.insert(3);
-      tst.insert(bst);
-      tst.remove(bst);
+      //tst.emptyTree(bst);
+      bst.insert(3);
+      bst.insert(4);
+      bst.insert(2);
+      bst.insert(5);
+      System.out.println(bst.findMin());
+      //QUESTION: how do i print?
+      tree(bst);
+      //tst.insert(3);
+
+      //tst.remove(bst);
       //tst.merge(bst);
  
       // etc...
