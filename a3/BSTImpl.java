@@ -136,7 +136,7 @@ public class BSTImpl implements BST {
         //okay wait remove apparently doesn't work either
         // so its something to do w how i'm testing it
         if (this.root == null) {
-            this.root = new NodeImpl(value);
+            this.root = new NodeImpl(value); size++;
         }
         //If we try to add an element, and it is a duplicate, return the element
         //but make no changes to the tree... no new nodes added
@@ -320,6 +320,8 @@ public class BSTImpl implements BST {
 
 
     public int getMaxLeafHeightDiff () {
+        //MY PLAN: 1. take height of tree
+        //2. check that it is
         /*See BST.java for method specification */
         /* Hint: Which of the methods you're given are most similar to this? */
         /* Your code here */
@@ -329,9 +331,18 @@ public class BSTImpl implements BST {
         //so i want to find the smallest height between each of the leaves???
         //my recursive function should return an int
         //  then this fn should make it the min only if it is less than the min already.
-        //int min = getMaxLeafHeightDiff_r(this.root);
+        int min = getMaxLeafHeightDiff_r(this.root);
         int biggest_min;
         return 0;
     }
-
+    private void int getMaxLeafHeightDiff_r(Node c) {
+        //so we want to find the shallowest leaf,
+            //aka the leaf which has two null children FIRST
+        //when we have found the shallowest leaf,
+        //  we want a count of the depth of that leaf
+        if (c.getLeft() == null && c.getRight() == null);
+            //should be returning the node, no? but intellij won't let me
+            return c.getValue();
+        return -1;
+    }
 }
