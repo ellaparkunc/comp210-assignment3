@@ -314,7 +314,7 @@ public class BSTImpl implements BST {
         //}
         this.insert(c.getValue());
         merge_r(c.getLeft());
-        merge_r(c.getLeft());
+        merge_r(c.getRight());
     }
 
 
