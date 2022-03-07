@@ -27,6 +27,7 @@ public class Main {
         //how do i create a not empty bts
        //i had to add it to insert if root==null
       BST bst = new BSTImpl();
+      BST tree = new BSTImpl();
       Tester tst = new Tester();
       
       //tst.emptyTree(bst);
@@ -36,12 +37,14 @@ public class Main {
       bst.insert(6);
       bst.insert(4);
       bst.insert(7);
+      tree.insert(1);
       //QUESTION: how do i print?
       tree(bst);
       System.out.println(bst.findMin());
       System.out.println(bst.findMax());
       System.out.println(bst.get(5));
       System.out.println(bst.isFullBT());
+      System.out.println(bst.merge(tree));
       //tst.insert(3);
 
       //tst.remove(bst);

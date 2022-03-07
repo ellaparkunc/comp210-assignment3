@@ -273,6 +273,10 @@ public interface BST {
        *
        * There is only a single leaf with height 2.  So getMaxLeafHeightDiff() is 0.
        *
+       *
+       *
+       *
+       *
        * if (this.root == null) {
             this.root = new NodeImpl(value);
         }

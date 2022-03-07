@@ -266,9 +266,7 @@ public class BSTImpl implements BST {
         // if both null, quit out.
         // at the end, if you havn't returned f, return t
 
-        isFullTree_r(this.root);
-
-        return true;
+        return isFullTree_r(this.root);
     }
         private boolean isFullTree_r( Node c) {
         //if neither have children
@@ -280,8 +278,7 @@ public class BSTImpl implements BST {
         }
         //if both have children
         else if (c.getLeft() != null && c.getRight() != null) {
-            isFullTree_r(c.getLeft());
-            isFullTree_r(c.getRight());
+            return isFullTree_r(c.getLeft()) && isFullTree_r(c.getRight());
         }
         //otherwise, has only 1 child
             return false;
@@ -296,29 +293,29 @@ public class BSTImpl implements BST {
         // have to somehow count when an add is successful
         // so we can return the number of nodes added
         /* Your code here */
-
-        int added_success = 0;
-        int add_to = merge_r(nbt, this.root);
-        added_success += add_to;
-        return added_success;
+        if (this.root == null) {
+            return 0;
+        }
+        int original_size = this.size();
+        merge_r(nbt.getRoot());
+        int final_size = this.size();
+        return final_size - original_size;
     }
-    private int merge_r( BST tree, Node c) {
-        int count = 0;
+    //i want to pass in two nodes.
+        //I will iterate over nbt and add it wherever necessary in og
+    private void merge_r(Node c) {
+        if (c == null){
+            return;
+        }
         if (this.contains(c.getValue())) {
             //skip and do not add
         }
         //if c should be added,
         else {
-            tree.insert(c.getValue());
-            count++;
+            this.insert(c.getValue());
         }
-        if (c.getLeft() != null) {
-            merge_r(tree, c.getLeft());
-        }
-        if (c.getRight() != null) {
-            merge_r(tree, c.getRight());
-        }
-        return count;
+        merge_r(c.getLeft());
+        merge_r(c.getLeft());
     }
 
 
@@ -326,8 +323,15 @@ public class BSTImpl implements BST {
         /*See BST.java for method specification */
         /* Hint: Which of the methods you're given are most similar to this? */
         /* Your code here */
-        
-        return 0;// Dummy return statement.  Remove when you implement!
+        if (this.root == null) {
+            return 0;
+        } int max = this.height();
+        //so i want to find the smallest height between each of the leaves???
+        //my recursive function should return an int
+        //  then this fn should make it the min only if it is less than the min already.
+        //int min = getMaxLeafHeightDiff_r(this.root);
+        int biggest_min;
+        return 0;
     }
 
 }
