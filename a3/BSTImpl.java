@@ -335,14 +335,14 @@ public class BSTImpl implements BST {
         int biggest_min;
         return 0;
     }
-    private void int getMaxLeafHeightDiff_r(Node c) {
+    private int getMaxLeafHeightDiff_r(Node c) {
         //so we want to find the shallowest leaf,
             //aka the leaf which has two null children FIRST
         //when we have found the shallowest leaf,
         //  we want a count of the depth of that leaf
-        if (c.getLeft() == null && c.getRight() == null);
+        if (c.getLeft() == null && c.getRight() == null) {
             //should be returning the node, no? but intellij won't let me
             return c.getValue();
-        return -1;
     }
-}
+        return 0;
+}}
