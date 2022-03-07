@@ -272,5 +272,49 @@ public interface BST {
        *        (2)
        *
        * There is only a single leaf with height 2.  So getMaxLeafHeightDiff() is 0.
+       *
+       * if (this.root == null) {
+            this.root = new NodeImpl(value);
+        }
+        //If we try to add an element, and it is a duplicate, return the element
+        //but make no changes to the tree... no new nodes added
+        if (contains(value)){
+            return value;
+        }
+        return insert_r(value,this.root); }
+
+        private int insert_r(int k, Node c) {
+        //HOW TO ADD VALUE? (not rename)
+            //you do new NodeImpl(int)
+            if (k < c.getValue()) {
+                //if k is less than left most value
+                if (c.getLeft() == null) {
+                    Node lc = new NodeImpl(k);
+                    c.setLeft(lc); size++; return k;
+                } else {
+                    //if there is a value to the left, recurse on that value and k
+                    //go lower and left or higher and right until you hit null
+                    return insert_r(k, c.getLeft());
+                }
+            }
+
+            if (k > c.getValue()) {
+                //if k is greater than right most value
+                if (c.getRight() == null) {
+                    Node rc = new NodeImpl(k);
+                    c.setRight(rc); size++; return k;
+                } else {
+                    //if there is a value to the left, recurse on that value and k
+                    //go lower and left or higher and right until you hit null
+                    return insert_r(k, c.getRight());
+                }
+            } else {
+                return -1;
+            }
+            //if k < Node c,
+                //&& left of that = null, add value to the left
+                //recursively call insert_r on (k & node to the left)
+            //same for greater than except for right
+        }
        */
 }

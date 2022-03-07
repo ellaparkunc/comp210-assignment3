@@ -31,12 +31,17 @@ public class Main {
       
       //tst.emptyTree(bst);
       bst.insert(3);
-      bst.insert(4);
-      bst.insert(2);
       bst.insert(5);
-      System.out.println(bst.findMin());
+      bst.insert(2);
+      bst.insert(6);
+      bst.insert(4);
+      bst.insert(7);
       //QUESTION: how do i print?
       tree(bst);
+      System.out.println(bst.findMin());
+      System.out.println(bst.findMax());
+      System.out.println(bst.get(5));
+      System.out.println(bst.isFullBT());
       //tst.insert(3);
 
       //tst.remove(bst);

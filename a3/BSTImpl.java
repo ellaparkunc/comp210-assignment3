@@ -207,8 +207,15 @@ public class BSTImpl implements BST {
     public int findMax() {
         /*See BST.java for method specification */
         /* Your code here */
-
-       return Integer.MIN_VALUE; // Dummy return statement.  Remove when you implement!
+        Node here = this.root;
+        for (int i = 0; i < this.height() + 1; i++) {
+            if (here.getRight() == null) {
+                return here.getValue();
+            } else {
+                here = here.getRight();
+            }
+        }
+        return -100;
 
     }
     
@@ -218,33 +225,102 @@ public class BSTImpl implements BST {
         /*See BST.java for method specification */
         /* Hint: Make sure you return a Node, not an int */
         /* Your code here */
-
-      return null; // Dummy return statement.  Remove when you implement!
+        //so find but without insert :)
+        if (!contains(val)) {
+            return null;
+        }
+        if (this.root.getValue() == val) {
+            return this.root;
+        }
+        return get_r(val, this.root);
     }
-    
+
+    private Node get_r(int k, Node c) {
+        if (k < c.getValue()) {
+            if (c.getLeft().getValue() == k) {
+                return c.getLeft();
+            } else {
+                return get_r(k, c.getLeft());
+            }
+        }
+        if (k > c.getValue()) {
+            if (c.getRight().getValue() == k) {
+                return c.getRight();
+            } else {
+                return get_r(k, c.getRight());
+            }
+        }
+        return c;
+    }
+
     @Override
     // interface method ==================================================
     public boolean isFullBT() {
         /*See BST.java for method specification */
         /* Hint: How can you "break-up" the problem into smaller pieces? */
         /* Your code here */
+        //soooo what i want to do is check a smaller and smaller tree.
+        //I want to call isFullTree_r() on smaller and smaller trees.
+        //small tree will say if L&R tree are both !null,
+        //  call recursive on both L&R
+        // if both null, quit out.
+        // at the end, if you havn't returned f, return t
 
-        return false; // Dummy return statement.  Remove when you implement!
+        isFullTree_r(this.root);
+
+        return true;
     }
-    
+        private boolean isFullTree_r( Node c) {
+        //if neither have children
+        if (c.getLeft() == null && c.getRight() == null) {
+            //idk, congratulate yourself??
+            //i need the code to not return but instead to continue on
+            //to check more things but maybe it should somehow save that its good?
+            return true;
+        }
+        //if both have children
+        else if (c.getLeft() != null && c.getRight() != null) {
+            isFullTree_r(c.getLeft());
+            isFullTree_r(c.getRight());
+        }
+        //otherwise, has only 1 child
+            return false;
+    }
     @Override
     // interface method ==================================================
     public int merge(BST nbt) {
         /*See BST.java for method specification */
-      // Hint: traverse bst using pre-order
-      // as each node is visited, take the value there
-      // and do this.insert(value)
-      // have to somehow count when an add is successful
-      // so we can return the number of nodes added
-         /* Your code here */
-        
-        return 0;  // Dummy return statement.  Remove when you implement!
+        // Hint: traverse bst using pre-order
+        // as each node is visited, take the value there
+        // and do this.insert(value)
+        // have to somehow count when an add is successful
+        // so we can return the number of nodes added
+        /* Your code here */
+
+        int added_success = 0;
+        int add_to = merge_r(nbt, this.root);
+        added_success += add_to;
+        return added_success;
     }
+    private int merge_r( BST tree, Node c) {
+        int count = 0;
+        if (this.contains(c.getValue())) {
+            //skip and do not add
+        }
+        //if c should be added,
+        else {
+            tree.insert(c.getValue());
+            count++;
+        }
+        if (c.getLeft() != null) {
+            merge_r(tree, c.getLeft());
+        }
+        if (c.getRight() != null) {
+            merge_r(tree, c.getRight());
+        }
+        return count;
+    }
+
 
     public int getMaxLeafHeightDiff () {
         /*See BST.java for method specification */
