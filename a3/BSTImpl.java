@@ -34,6 +34,9 @@ public class BSTImpl implements BST {
       if (c==null) return -1;
       int lht = height_recursive(c.getLeft());
       int rht = height_recursive(c.getRight());
+      //QUESTION: why did we add one?
+        //bc lht counts the number of times we recurse
+        //but we are missing the arrow from c to left of c so we must add it back.
       return Math.max(lht,rht) + 1;
     }
     
@@ -321,7 +324,11 @@ public class BSTImpl implements BST {
 
     public int getMaxLeafHeightDiff () {
         //MY PLAN: 1. take height of tree
-        //2. check that it is
+        //2. take smaller and smaller trees until you get to a leaf,
+            //3. when you find a leaf, see how many back you've traveled?
+            //4. this would require adding to a variable every time you have recursed again
+                //this variable cannot be initiated inside the recursion though,
+        //      //bc it will then be reinitiated every recursion and cannot count the recursion
         /*See BST.java for method specification */
         /* Hint: Which of the methods you're given are most similar to this? */
         /* Your code here */
@@ -332,17 +339,19 @@ public class BSTImpl implements BST {
         //my recursive function should return an int
         //  then this fn should make it the min only if it is less than the min already.
         int min = getMaxLeafHeightDiff_r(this.root);
-        int biggest_min;
-        return 0;
+        return max-min;
     }
     private int getMaxLeafHeightDiff_r(Node c) {
         //so we want to find the shallowest leaf,
             //aka the leaf which has two null children FIRST
         //when we have found the shallowest leaf,
         //  we want a count of the depth of that leaf
-        if (c.getLeft() == null && c.getRight() == null) {
+        //if (c.getLeft() == null && c.getRight() == null) {
             //should be returning the node, no? but intellij won't let me
-            return c.getValue();
-    }
-        return 0;
+            //return c.getValue();
+    //}
+        if (c==null) return -1;
+        int lht = getMaxLeafHeightDiff_r(c.getLeft());
+        int rht = getMaxLeafHeightDiff_r(c.getRight());
+        return Math.min(lht,rht) + 1;
 }}

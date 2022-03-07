@@ -320,5 +320,19 @@ public interface BST {
                 //recursively call insert_r on (k & node to the left)
             //same for greater than except for right
         }
+        *
+        *
+        *
+        * HEIGHT
+        *
+        * public int height() {
+      return height_recursive(this.root);
+    }
+    // private recursive helper
+    private int height_recursive(Node c) {
+      if (c==null) return -1;
+      int lht = height_recursive(c.getLeft());
+      int rht = height_recursive(c.getRight());
+      return Math.max(lht,rht) + 1;
        */
 }

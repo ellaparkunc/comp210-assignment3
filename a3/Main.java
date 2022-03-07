@@ -45,6 +45,8 @@ public class Main {
       System.out.println(bst.get(5));
       System.out.println(bst.isFullBT());
       System.out.println(bst.merge(tree));
+      tree(bst);
+      System.out.println(bst.getMaxLeafHeightDiff());
       //tst.insert(3);
 
       //tst.remove(bst);
