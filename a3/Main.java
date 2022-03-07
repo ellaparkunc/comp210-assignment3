@@ -35,9 +35,11 @@ public class Main {
       bst.insert(5);
       bst.insert(2);
       bst.insert(6);
-      bst.insert(4);
       bst.insert(7);
       tree.insert(1);
+      tree.insert(4);
+      tree.insert(0);
+      tree.insert(8);
       //QUESTION: how do i print?
       tree(bst);
       System.out.println(bst.findMin());

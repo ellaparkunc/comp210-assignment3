@@ -296,9 +296,6 @@ public class BSTImpl implements BST {
         // have to somehow count when an add is successful
         // so we can return the number of nodes added
         /* Your code here */
-        if (this.root == null) {
-            return 0;
-        }
         int original_size = this.size();
         merge_r(nbt.getRoot());
         int final_size = this.size();
@@ -307,16 +304,15 @@ public class BSTImpl implements BST {
     //i want to pass in two nodes.
         //I will iterate over nbt and add it wherever necessary in og
     private void merge_r(Node c) {
+        //QUESTION: why can my merge merge the first in a list but not the second?
         if (c == null){
             return;
         }
-        if (this.contains(c.getValue())) {
-            //skip and do not add
-        }
-        //if c should be added,
-        else {
-            this.insert(c.getValue());
-        }
+        //if (!this.contains(c.getValue())) {
+            //if c isn't already there,
+                //this.insert(c.getValue());
+        //}
+        this.insert(c.getValue());
         merge_r(c.getLeft());
         merge_r(c.getLeft());
     }
